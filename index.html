@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Choice Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-950">
+
+  const categories = [
+    { icon: Wind, title: 'แอร์', desc: 'BTU, Inverter, แอร์มือสอง, ค่าไฟ', posts: '42 บทความ' },
+    { icon: Tv, title: 'ทีวี', desc: 'OLED, QLED, 120Hz, Soundbar', posts: '36 บทความ' },
+    { icon: Wifi, title: 'เน็ตบ้าน', desc: 'Router, Mesh Wi‑Fi, Fiber, Ping', posts: '28 บทความ' },
+    { icon: Car, title: 'รถยนต์', desc: 'ฟิล์มกรองแสง, กล้องติดรถ, EV', posts: '31 บทความ' },
+  ];
+
+  const articles = [
+    {
+      tag: 'คู่มือเลือกซื้อ',
+      title: 'วิธีคำนวณ BTU แอร์ แบบไม่ต้องเปิดตำราวิศวะ',
+      desc: 'ห้องกี่ตารางเมตร ใช้แอร์กี่ BTU ถึงจะเย็นจริง ไม่เปลืองไฟ และไม่ซื้อเกินจำเป็น',
+      read: 'อ่าน 5 นาที',
+    },
+    {
+      tag: 'อธิบายง่าย',
+      title: 'TV 120Hz จำเป็นจริงไหม หรือแค่ตัวเลขไว้ขายของ?',
+      desc: 'แยกให้ชัด ดูหนัง เล่นเกม ดูกีฬา แต่ละแบบได้ประโยชน์ไม่เท่ากัน',
+      read: 'อ่าน 4 นาที',
+    },
+    {
+      tag: 'แก้ปัญหา',
+      title: 'Router แพงแล้วทำไมเน็ตยังช้า ปัญหาอาจไม่ได้อยู่ที่แพ็กเกจ',
+      desc: 'รวมจุดพลาดยอดฮิตของบ้านไทย ตั้งแต่วางผิดมุม ไปจนถึงอุปกรณ์เก่าเกิน',
+      read: 'อ่าน 6 นาที',
+    },
+  ];
+
+  const stats = [
+    { label: 'ผู้ติดตาม YouTube', value: '21,863+' },
+    { label: 'ยอดดูสะสม', value: '2.26M+' },
+    { label: 'เวลารับชมสะสม', value: '153K ชม.' },
+    { label: 'ผู้ชมไทย', value: '89.3%' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-950">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-lg font-black text-white shadow-sm">SC</div>
+            <div>
+              <div className="text-lg font-black leading-none">ฉลาดเลือก</div>
+              <div className="text-xs text-slate-500">Smart Choice Guide</div>
+            </div>
+          </div>
+          <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
+            <a href="#categories" className="hover:text-blue-700">หมวดหมู่</a>
+            <a href="#articles" className="hover:text-blue-700">บทความ</a>
+            <a href="#reviews" className="hover:text-blue-700">รีวิว</a>
+            <a href="#deals" className="hover:text-blue-700">ดีลน่าสนใจ</a>
+          </nav>
+          <button className="rounded-full bg-slate-950 px-5 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700">ค้นหาคู่มือ</button>
+        </div>
+      </header>
+
+      <main>
+        <section className="relative overflow-hidden bg-white">
+          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-100 blur-3xl" />
+          <div className="absolute -bottom-28 left-10 h-72 w-72 rounded-full bg-orange-100 blur-3xl" />
+          <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
+            <div className="relative z-10">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
+                <ShieldCheck className="h-4 w-4" /> คู่มือเลือกซื้อสำหรับคนไม่อยากโดนขายฝัน
+              </div>
+              <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight md:text-6xl">
+                ก่อนซื้อเครื่องใช้ไฟฟ้า อ่านตรงนี้ก่อน เดี๋ยวจะเสียเงินแบบงงๆ
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+                เว็บรวมคู่มือเลือกซื้อ แอร์ ทีวี เน็ตบ้าน เครื่องใช้ไฟฟ้า และของไอทีในบ้าน อธิบายแบบคนใช้จริง ไม่ยัดศัพท์ ไม่อวยเกินเบอร์ แล้วบอกตรงๆ ว่าอะไรควรซื้อ อะไรควรข้าม
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 font-black text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
+                  เริ่มอ่านคู่มือ <ArrowRight className="h-5 w-5" />
+                </button>
+                <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 font-black text-slate-800 hover:border-blue-300">
+                  <PlayCircle className="h-5 w-5" /> ดูรีวิวล่าสุด
+                </button>
+              </div>
+            </div>
+
+            <div className="relative z-10 rounded-[2rem] border border-slate-200 bg-slate-50 p-5 shadow-xl shadow-slate-200/70">
+              <div className="rounded-[1.5rem] bg-white p-5 shadow-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-bold text-slate-500">ค้นหาก่อนซื้อ</div>
+                    <div className="text-2xl font-black">อยากรู้อะไร พิมพ์เลย</div>
+                  </div>
+                  <Search className="h-7 w-7 text-blue-600" />
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-400">เช่น แอร์ 12000 BTU พอไหม...</div>
+                <div className="mt-5 grid gap-3">
+                  {['แอร์ Inverter ประหยัดจริงไหม', 'OLED ยังกลัว Burn‑in ไหม', 'Mesh Wi‑Fi เหมาะกับบ้านแบบไหน'].map((item) => (
+                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4">
+                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      <span className="font-semibold">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-8">
+          <div className="grid gap-4 md:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="text-3xl font-black text-slate-950">{stat.value}</div>
+                <div className="mt-2 text-sm font-semibold text-slate-500">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="categories" className="mx-auto max-w-7xl px-5 py-12">
+          <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <div className="text-sm font-black uppercase tracking-wider text-blue-600">Categories</div>
+              <h2 className="mt-2 text-3xl font-black md:text-4xl">เลือกหมวดที่กำลังจะเสียเงิน</h2>
+            </div>
+            <p className="max-w-xl text-slate-600">ไม่ได้รวมทุกอย่างในจักรวาล แต่เน้นของที่คนซื้อแล้วพลาดบ่อย ซื้อผิดแล้วเจ็บจริง</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-4">
+            {categories.map(({ icon: Icon, title, desc, posts }) => (
+              <div key={title} className="group rounded-[1.7rem] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 group-hover:bg-blue-600 group-hover:text-white">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-2xl font-black">{title}</h3>
+                <p className="mt-2 min-h-12 text-slate-600">{desc}</p>
+                <div className="mt-5 text-sm font-bold text-blue-700">{posts}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="articles" className="bg-white py-14">
+          <div className="mx-auto max-w-7xl px-5">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <div className="text-sm font-black uppercase tracking-wider text-orange-600">Latest Guides</div>
+                <h2 className="mt-2 text-3xl font-black md:text-4xl">บทความที่ควรอ่านก่อนจ่ายเงิน</h2>
+              </div>
+              <button className="hidden rounded-full border border-slate-200 px-5 py-3 text-sm font-black hover:border-blue-300 md:block">ดูทั้งหมด</button>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3">
+              {articles.map((article) => (
+                <article key={article.title} className="rounded-[1.7rem] border border-slate-200 bg-slate-50 p-6 transition hover:bg-white hover:shadow-xl hover:shadow-slate-200/80">
+                  <div className="mb-4 inline-flex rounded-full bg-orange-100 px-3 py-1 text-xs font-black text-orange-700">{article.tag}</div>
+                  <h3 className="text-2xl font-black leading-snug">{article.title}</h3>
+                  <p className="mt-4 leading-7 text-slate-600">{article.desc}</p>
+                  <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-5">
+                    <span className="text-sm font-bold text-slate-500">{article.read}</span>
+                    <ArrowRight className="h-5 w-5 text-blue-600" />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="reviews" className="mx-auto grid max-w-7xl gap-6 px-5 py-14 md:grid-cols-[0.85fr_1.15fr]">
+          <div className="rounded-[2rem] bg-slate-950 p-8 text-white shadow-xl">
+            <BarChart3 className="mb-5 h-10 w-10 text-blue-300" />
+            <h2 className="text-3xl font-black">รีวิวแบบมีหลักฐาน ไม่ใช่แค่เปิดกล่องแล้วชมว่าสวย</h2>
+            <p className="mt-5 leading-8 text-slate-300">วัดจากการใช้งานจริง เปรียบเทียบให้เห็นภาพ แล้วสรุปให้ชัดว่าเหมาะกับใคร ไม่เหมาะกับใคร</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {['ทดสอบเสียงทีวีในห้องจริง', 'เทียบค่าไฟแอร์ Inverter', 'วาง Mesh Wi‑Fi ยังไงให้คุ้ม', 'ฟิล์มรถแบบไหนกันร้อนจริง'].map((item) => (
+              <div key={item} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="mb-4 h-32 rounded-2xl bg-gradient-to-br from-slate-100 to-blue-50" />
+                <h3 className="text-xl font-black">{item}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">คอนเทนต์ทดสอบจริงสำหรับคนกำลังตัดสินใจซื้อ</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="deals" className="bg-blue-600 py-14 text-white">
+          <div className="mx-auto grid max-w-7xl gap-8 px-5 md:grid-cols-[1fr_0.8fr] md:items-center">
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-bold"><ShoppingBag className="h-4 w-4" /> Smart Deals</div>
+              <h2 className="text-3xl font-black md:text-5xl">ดีลไม่ได้ดีทุกดีล บางดีลแค่ลดเพื่อให้ดูเหมือนคุ้ม</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50">รวมโปรที่คัดแล้วว่าเหมาะกับการใช้งานจริง พร้อมบอกข้อควรระวังก่อนกดซื้อ</p>
+            </div>
+            <div className="rounded-[2rem] bg-white p-6 text-slate-950 shadow-2xl">
+              <div className="text-sm font-black text-blue-600">ดีลแนะนำวันนี้</div>
+              <div className="mt-2 text-2xl font-black">แอร์ 12,000 BTU Inverter</div>
+              <p className="mt-3 text-slate-600">เหมาะกับห้องนอน 16-20 ตร.ม. ถ้าห้องโดนแดดจัด ต้องเผื่อ BTU เพิ่ม</p>
+              <button className="mt-6 w-full rounded-2xl bg-slate-950 px-5 py-4 font-black text-white hover:bg-blue-700">ดูดีลที่คัดแล้ว</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-slate-950 px-5 py-10 text-slate-400">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <div className="text-xl font-black text-white">ฉลาดเลือก</div>
+            <div className="mt-1 text-sm">เว็บคู่มือเลือกซื้อของใช้ในบ้านและเทคโนโลยี แบบไม่ขายฝัน</div>
+          </div>
+          <div className="text-sm">© 2026 Smart Choice Guide</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
